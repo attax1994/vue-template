@@ -1,0 +1,45 @@
+@import "../../../assets/theme/theme";
+
+$HorizonBackground: white;
+$cardHeight: 250px;
+$imageHeight: 120px;
+$textHeight: $cardHeight - $imageHeight;
+
+.list-wrapper {
+  overflow-x: hidden;
+  white-space: nowrap;
+  .card-list {
+    transition: transform .3s ease;
+  }
+}
+
+.card-wrapper {
+  margin-left: 1px;
+  vertical-align: top;
+  .card {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    height: $cardHeight;
+    background: $HorizonBackground;
+    img {
+      width: 100%;
+      height: $imageHeight;
+    }
+    .text{
+      padding: 1rem;
+      height: $textHeight;
+    }
+    .button-group {
+      text-align: right;
+    }
+  }
+  .popover-wrapper {
+    padding: 1rem;
+  }
+}
+
+.text {
+  word-break: break-all;
+}
+
+

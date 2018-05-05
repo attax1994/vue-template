@@ -1,0 +1,60 @@
+@import "./theme";
+
+/**************************
+    basic section style
+**************************/
+.container {
+  min-width: 80%;
+  max-width: 1200px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-md {
+  min-width: 60%;
+  max-width: 900px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-sm {
+  min-width: 40%;
+  max-width: 600px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-wrapper {
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+}
+
+.section {
+  padding-bottom: 2.5%;
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.section-header {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: center;
+  span {
+    border-bottom: 1px solid $primary;
+  }
+}
+
+.section-description {
+  font-size: 16px;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: $darkGray;
+}

@@ -1,0 +1,82 @@
+@import "../../../assets/theme/theme";
+
+$imageHeight: 200px;
+$collapsedTextHeight: 90px;
+$fullContentHeight: 112px;
+$cardHeight: $imageHeight + $collapsedTextHeight;
+
+.list {
+  letter-spacing: -3px;
+  .item {
+    height: $imageHeight;
+    margin-bottom: 1rem;
+    letter-spacing: normal;
+    background: white;
+    .image {
+      display: inline-block;
+      width: 30%;
+      height: $imageHeight;
+      vertical-align: top;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .text {
+      display: inline-block;
+      vertical-align: top;
+      width: 70%;
+      padding: 1rem;
+      height: $imageHeight;
+      color: $darkBg;
+      &:hover {
+        color: $darkBg;
+      }
+      .title {
+        margin-bottom: .5rem;
+      }
+      .content {
+        height: $fullContentHeight;
+        margin-bottom: .5rem;
+      }
+      .actions {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.list.collapsed {
+  .item {
+    display: inline-block;
+    height: $cardHeight;
+    width: 22%;
+    margin: 0 2% 1rem;
+    &:nth-child(4n-3) {
+      margin-left: 0;
+    }
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+    .image {
+      width: 100%;
+    }
+    .text {
+      height: $collapsedTextHeight;
+      width: 100%;
+      padding: .5rem 1rem;
+      .content {
+        height: auto;
+      }
+    }
+  }
+}
+
+.list-change-enter-active, .list-change-leave-active {
+  transition: opacity .5s !important;
+}
+
+.list-change-enter, .list-change-leave-to {
+  opacity: 0 !important;
+}

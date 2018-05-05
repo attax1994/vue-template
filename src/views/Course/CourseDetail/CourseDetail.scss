@@ -1,0 +1,95 @@
+@import "../../../assets/theme/theme";
+
+$informationSectionHeight: 229px;
+$imageWidth: 360px;
+$textWrapperMinWidth: 700px;
+$teacherInformationWidth: 300px;
+
+.course-detail {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: white;
+}
+
+.content {
+  margin-bottom: .5rem;
+  &.description {
+    height: 63px;
+    line-height: 21px;
+    overflow: hidden;
+  }
+}
+ 
+.information {
+  > img {
+    vertical-align: top;
+    width: $imageWidth;
+    height: $informationSectionHeight;
+    padding-right: 1rem;
+    margin-bottom: .5rem;
+  }
+  .text-wrapper {
+    display: inline-block;
+    width: calc(99% - #{$imageWidth});
+    min-width: $textWrapperMinWidth;
+    height: $informationSectionHeight;
+    .text {
+      display: inline-block;
+      vertical-align: top;
+      width: calc(99% - #{$teacherInformationWidth});
+      height: $informationSectionHeight - 40px;
+      color: $darkBg;
+      .title {
+        height: 48px;
+        line-height: 24px;
+        overflow: hidden;
+      }
+    }
+    .teacher {
+      display: inline-block;
+      width: $teacherInformationWidth;
+      padding-left: 1rem;
+      margin-left: auto;
+      text-align: left;
+      .avatar {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        vertical-align: top;
+        border-radius: 100%;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .info {
+        display: inline-block;
+        width: calc(99% - 48px);
+        vertical-align: top;
+        padding-left: 1rem;
+        > div {
+          line-height: 24px;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .button-group {
+      .button {
+        width: 8rem;
+        padding-right: 25px;
+        &:hover {
+          .el-icon-location-outline {
+            animation: shake .6s infinite ease;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes shake {
+  50% {
+    transform: translate(0, -5px);
+  }
+}

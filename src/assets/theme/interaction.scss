@@ -1,0 +1,67 @@
+@import "./theme";
+
+.top-line {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 4px;
+    left: 50%;
+    right: 50%;
+    background: $primary;
+    transition: left .3s ease, right .3s ease;
+  }
+  &:hover {
+    &:before {
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.hover-scale {
+  transition: .2s .1s cubic-bezier(0.4, 0.0, 0.2, 1);
+  &:hover {
+    transform: scale(1.02);
+    transition-duration: .4s;
+  }
+}
+
+.hover-scale-lg {
+  transition: .2s .1s cubic-bezier(0.4, 0.0, 0.2, 1);
+  &:hover {
+    transform: scale(1.05);
+    transition-duration: .4s;
+  }
+}
+
+/*************
+* transition
+*************/
+/* fade */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s !important;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0 !important;
+}
+
+/* fade with movement */
+.fade-next-enter-active,
+.fade-next-leave-active,
+.fade-previous-enter-active,
+.fade-previous-leave-active {
+  transition: .3s ease;
+}
+
+.fade-next-enter, .fade-previous-leave-to {
+  transform: translate(20%, 0);
+  opacity: 0;
+}
+
+.fade-previous-enter, .fade-next-leave-to {
+  transform: translate(-20%, 0);
+  opacity: 0;
+}

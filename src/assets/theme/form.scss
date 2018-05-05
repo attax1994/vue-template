@@ -1,0 +1,41 @@
+@import "./theme";
+
+button {
+  border-radius: 0;
+  &:focus {
+    box-shadow: none;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+label {
+  margin-bottom: 0 !important;
+}
+
+input[type="text"], input[type='number'], input[type='mail'] {
+  border-radius: 0;
+  box-shadow: none;
+  transition: all .2s linear;
+  outline: none;
+  &:focus {
+    box-shadow: 0 3px 10px rgba(black, .2);
+    transition: all .4s linear;
+  }
+}
+
+textarea {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transition: all .2s linear !important;
+  &:focus {
+    box-shadow: 0 2px 8px rgba(black, .2) !important;
+    transition: all .4s linear !important;
+  }
+}
+
+
+
+
+
