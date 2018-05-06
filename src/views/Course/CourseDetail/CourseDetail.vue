@@ -2,15 +2,7 @@
   <div class="container">
     <transition name="skeleton" mode="out-in">
       <div class="course-detail section-wrapper" v-if="isDetailReady" key="course-detail">
-        <section class="section">
-          <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item to="/course">全部课程</el-breadcrumb-item>
-            <el-breadcrumb-item v-for="stack in courseCategoryStack"
-                                :to="'/course?category=' + stack.id">{{stack.title}}
-            </el-breadcrumb-item>
-            <el-breadcrumb-item>当前标题</el-breadcrumb-item>
-          </el-breadcrumb>
-        </section>
+        <CourseLocation :category="'1-1-2'" courseTitle="当前"></CourseLocation>
 
         <section class="information section">
           <img src="@/assets/img/index/banner.jpg">
@@ -87,73 +79,23 @@
     components: {
       CourseIndex: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseIndex/CourseIndex.vue'),
       CourseDetailSkeleton: () => import(/* webpackChunkName: "group-course" */ '@/views/Course/CourseDetail/CourseDetail.skeleton.vue'),
+      CourseLocation: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseLocation/CourseLocation.vue'),
     },
   })
   export default class CourseDetail extends Vue {
     public isDetailReady: boolean = false;
     public isFavorite: boolean = false;
 
-    public courseCategoryStack: Array<any> = [];
-    private _courseCategory: string;
-    private _courseCategoryItems: Array<any>;
-    private _courseCategoryItems$: Subscription;
-
     mounted() {
       setTimeout(() => {
         this.isDetailReady = true;
       }, 2000);
-
-      this._courseCategory = '1-1-2';
-
-      this._initBreadCrumbItems();
     }
 
-    beforeDestroy() {
-      this._courseCategoryItems$.unsubscribe();
-    }
-
-    private _initBreadCrumbItems() {
-      this._courseCategoryItems = this.$store.state.course.categoryItems;
-      this._unifyCategoryStack();
-
-      this._courseCategoryItems$ = (this.$store.state.course as CourseStateInterface).$categoryItems
-        .subscribe((data: Array<any>) => {
-          this._courseCategoryItems = data;
-          this._unifyCategoryStack();
-        });
-      return this;
-    }
-
-    private _unifyCategoryStack() {
-      const levels = this._courseCategory.split('-'),
-        results = [];
-      let parent = this._courseCategoryItems.find((value: any) => {
-        return this._courseCategory.startsWith(value.id);
-      });
-
-      levels.forEach(() => {
-        if (parent) {
-          parent = parent.children.find((value: any) => {
-            return this._courseCategory.startsWith(value.id);
-          });
-
-          results.push({
-            id: parent.id,
-            title: parent.title
-          });
-        }
-      });
-      this.courseCategoryStack = results;
-      return this;
-    }
   }
 </script>
 
 <style scoped lang="scss">
-  @import "./CourseDetail";
-
-  .el-breadcrumb {
-    font-size: $font-size-md;
-  }
+  @import "CourseDetail";
 
 </style>
