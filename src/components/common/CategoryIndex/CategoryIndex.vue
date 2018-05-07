@@ -7,15 +7,15 @@
     </div>
 
     <div class="category-index-content">
-      <template v-for="main in courseCategoryItems">
+      <template v-for="topLevel in courseCategoryItems">
         <ul class="category-main-menu elevation-4">
-          <li class="category-main-menu-item" v-for="firstLevel in main.children">
+          <li class="category-main-menu-item" v-for="firstLevel in topLevel.children">
 
             <div class="menu-item-title clear-fix">
               <div class="title-text">
                 <router-link class="black-link no-underline" :to="'/course?category=' + firstLevel.id"
                              :target="firstLevel.target || '_blank'">
-                  <b>{{firstLevel.title}}</b>
+                  {{firstLevel.title}}
                 </router-link>
               </div>
               <div class="title-icon" v-if="firstLevel.children">
@@ -23,7 +23,8 @@
               </div>
             </div>
 
-            <div class="category-menu-aside elevation-6" v-if="firstLevel.children">
+            <div class="category-menu-aside elevation-6" v-if="firstLevel.children"
+                 :style="{'min-height': `${asideMenuHeight}px`}">
               <ul>
                 <li v-for="secondLevel in firstLevel.children">
 
@@ -63,15 +64,16 @@
     computed: {
       ...mapState({
         courseCategoryItems: (state: any): any => state.course.categoryItems,
-      })
+      }),
+      asideMenuHeight() {
+        return this.courseCategoryItems[0].children.length * 49 - 1;
+      },
     }
   })
   export default class CategoryIndex extends Vue {
     public courseCategoryItems: Array<CategoryIndexEntity>;
+    public asideMenuHeight: number;
 
-    mounted() {
-      console.log(this.courseCategoryItems)
-    }
   }
 
   interface CategoryIndexEntity {
@@ -185,7 +187,7 @@
       padding-bottom: 12px;
       li {
         padding-bottom: 12px;
-        &:last-child{
+        &:last-child {
           padding-bottom: 0;
         }
         .category-aside-title {
