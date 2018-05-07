@@ -2,20 +2,8 @@
   <div class="list-wrapper">
     <transition name="list-change" mode="out-in">
 
-      <section class="list" v-if="!collapsed" key="list-skeleton-full">
-        <div class="item" v-for="item in counter">
-          <div class="image skeleton fade"></div>
-          <div class="text">
-            <div class="title skeleton fade"></div>
-            <div class="content skeleton fade"></div>
-            <div class="actions">
-              <div class="skeleton fade"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="list collapsed" v-else key="list-skeleton-collapsed">
+      <section class="list" :class="{collapsed: collapsed}"
+               :key="collapsed? 'item-list-skeleton-collapsed':'item-list-skeleton-full'">
         <div class="item" v-for="item in counter">
           <div class="image skeleton fade"></div>
           <div class="text">

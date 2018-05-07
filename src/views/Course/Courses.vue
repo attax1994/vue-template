@@ -5,8 +5,8 @@
 
       <button @click.stop="switchItemListStyle">转换</button>
       <transition name="skeleton" mode="out-in">
-        <ItemList :options="ItemListOptions" v-if="ItemListReady"></ItemList>
-        <ItemListSkeleton :collapsed="ItemListOptions.collapsed" v-else></ItemListSkeleton>
+        <ItemList :collapsed="ItemListCollapsed" :items="ItemListItems" v-if="ItemListReady"></ItemList>
+        <ItemListSkeleton :collapsed="ItemListCollapsed" v-else></ItemListSkeleton>
       </transition>
 
       <el-pagination
@@ -24,7 +24,7 @@
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
   import {CarouselOptionsInterface} from "../../components/common/Carousel/Carousel.entity";
-  import {ItemListOptionsInterface} from "../../components/common/ItemList/ItemList.entity";
+  import {ItemListEntityInterface, ItemListOptionsInterface} from "../../components/common/ItemList/ItemList.entity";
 
   @Component({
     components: {
@@ -45,17 +45,15 @@
     };
 
     public ItemListReady: boolean = false;
-    public ItemListOptions: ItemListOptionsInterface = {
-      collapsed: true,
-      items: Array(8).fill({
-        title: '标题',
-        content: '123',
-        imageUrl: 'img/index/banner.jpg',
-        link: '/course/detail/1',
-        starCount: 123,
-        purchaseCount: 123,
-      }),
-    };
+    public ItemListCollapsed: boolean = true;
+    public ItemListItems: Array<ItemListEntityInterface> = Array(8).fill({
+      title: '标题',
+      content: '123',
+      imageUrl: 'img/index/banner.jpg',
+      link: '/course/detail/1',
+      starCount: 123,
+      purchaseCount: 123,
+    });
 
     public currentPage = 1;
 
@@ -75,16 +73,12 @@
     }
 
     public switchItemListStyle() {
-      this.$set(this.ItemListOptions, 'collapsed', !this.ItemListOptions.collapsed);
+      this.ItemListCollapsed = !this.ItemListCollapsed;
       return this;
     }
 
     private _initItemListCollapse() {
-      if (window.innerWidth > 1000) {
-        this.$set(this.ItemListOptions, 'collapsed', true);
-      } else {
-        this.$set(this.ItemListOptions, 'collapsed', false);
-      }
+      this.ItemListCollapsed = window.innerWidth > 1000;
     }
 
   }
