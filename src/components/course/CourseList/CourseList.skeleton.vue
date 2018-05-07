@@ -33,7 +33,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import "./ItemList";
+  @import "CourseList";
 
   .list {
     &.collapsed {

@@ -30,15 +30,10 @@
 
 <script lang="ts">
   import {Component, Prop, Vue} from 'vue-property-decorator';
-  import {ItemListEntityInterface, ItemListOptionsEntity, ItemListOptionsInterface} from './ItemList.entity';
+  import {ItemListEntityInterface} from './CourseList.entity';
 
   @Component({
-    name: 'ItemList',
-    computed: {
-      realOptions() {
-        return Object.assign(new ItemListOptionsEntity, this.options);
-      }
-    }
+    name: 'CourseList',
   })
   export default class ItemList extends Vue {
     @Prop({required: false, type: Boolean, default: true}) collapsed: boolean;
@@ -48,6 +43,6 @@
 </script>
 
 <style scoped lang="scss">
-  @import "./ItemList";
+  @import "CourseList";
 
 </style>
