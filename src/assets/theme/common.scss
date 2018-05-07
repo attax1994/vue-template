@@ -42,11 +42,16 @@ img {
   color: $contentColor;
 }
 
-
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.clear-fix:after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 a {

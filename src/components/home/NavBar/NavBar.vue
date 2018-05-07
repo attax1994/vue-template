@@ -10,10 +10,12 @@
       <div class="container">
         <div class="left">
           <div class="logo" style="width: 200px;height: 48px; background: lightblue;">Logo</div>
-          <div class="option-panel-wrapper">
-            <OptionPanel :options="OptionPanelOptions" :items="courseCategoryItems"></OptionPanel>
+          <div class="category-index-wrapper">
+            <CategoryIndex></CategoryIndex>
           </div>
+
         </div>
+
 
         <div class="right">
           <el-button type="success">微信登陆</el-button>
@@ -29,22 +31,21 @@
   import {Component, Vue} from "vue-property-decorator";
   import {mapGetters, mapState} from "vuex";
   import {OptionPanelInterface, OptionPanelItemInterface} from "@/components/common/OptionPanel/OptionPanel.Entity";
-  import {DashDialogOptionsInterface} from "./DashDialog.entity";
+  import {DashDialogOptionsInterface} from "../DashDialog/DashDialog.entity";
 
   @Component({
     name: 'NavBar',
     components: {
-      DashDialog: () => import(/* webpackChunkName: "group-navbar" */ './DashDialog.vue'),
-      OptionPanel: () => import(/* webpackChunkName: "group-option-panel" */ '@/components/common/OptionPanel/OptionPanel.vue'),
+      DashDialog: () => import(/* webpackChunkName: "group-navbar" */ '@/components/home/DashDialog/DashDialog.vue'),
+      OptionPanel: () => import(/* webpackChunkName: "group-navbar" */ '@/components/common/OptionPanel/OptionPanel.vue'),
+      CategoryIndex: () => import(/* webpackChunkName: "group-navbar" */ '@/components/common/CategoryIndex/CategoryIndex.vue'),
     },
     computed: {
       ...mapGetters({
         isDashBoardActive: 'dashboard/isDashBoardActive',
       }),
       ...mapState({
-        courseCategoryItems: (state: any): any => {
-          return state.course.categoryItems;
-        },
+        courseCategoryItems: (state: any): any => state.course.categoryItems,
       })
     }
   })
@@ -97,7 +98,7 @@
           display: inline-block;
           vertical-align: top;
         }
-        .option-panel-wrapper {
+        .category-index-wrapper {
           display: inline-block;
         }
       }

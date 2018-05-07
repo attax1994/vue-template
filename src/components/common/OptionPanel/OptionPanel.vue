@@ -126,7 +126,7 @@
     background: white;
     transform: scale(1, 0);
     transform-origin: center top;
-    transition: transform 0s ease-in $closeDelay;
+    transition: transform 0s $material-timing-function $closeDelay;
     &.second {
       top: 100%;
       left: 0;
@@ -181,7 +181,7 @@
   .sub-list.second > .sub-item:hover > .sub-list.third,
   .sub-list.third > .sub-item:hover > .sub-list.fourth {
     transform: scale(1, 1);
-    transition: transform .1s ease-out $closeDelay;
+    transition: transform .1s $material-timing-function $closeDelay;
   }
 
   .option-list.dark {
