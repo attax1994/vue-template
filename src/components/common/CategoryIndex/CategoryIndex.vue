@@ -90,6 +90,7 @@
   @import "../../../assets/theme/theme";
 
   $category-main-menu-width: 200px;
+  $transition-delay: .2s;
 
   .category-index-wrapper {
     position: relative;
@@ -103,7 +104,7 @@
         margin-left: .5rem;
         transform: none;
         transform-origin: 50% 50%;
-        transition: transform .3s ease-out;
+        transition: transform .3s $material-timing-function;
       }
     }
     .category-index-content {
@@ -131,7 +132,7 @@
       .category-index-content {
         opacity: 1;
         visibility: visible;
-        transition: opacity .3s ease .2s;
+        transition: opacity .3s ease $transition-delay;
       }
     }
   }
@@ -152,7 +153,7 @@
         .title-icon {
           float: right;
           transform-origin: 50% 50%;
-          transition: transform .3s ease-out;
+          transition: transform .3s $material-timing-function $transition-delay;
         }
       }
       &:hover {
@@ -165,7 +166,7 @@
         .category-menu-aside {
           visibility: visible;
           opacity: 1;
-          transition: opacity .3s ease-out .2s;
+          transition: opacity .3s ease-out $transition-delay;
         }
       }
     }
