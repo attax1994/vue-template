@@ -43,25 +43,13 @@
 
 <script lang="ts">
   import {Component, Prop, Vue} from "vue-property-decorator";
-  import {
-    HorizontalScrollEntityInterface,
-    HorizontalScrollOptions,
-    HorizontalScrollOptionsInterface
-  } from "./HorizontalScroll.entity";
+  import {HorizontalScrollEntityInterface,} from "./HorizontalScroll.entity";
 
   @Component({
     name: 'HorizontalScroll',
-    computed: {
-      realOptions() {
-        this._initWrapper();
-        return Object.assign(new HorizontalScrollOptions(), this.options);
-      },
-    },
   })
   export default class HorizontalScroll extends Vue {
-    @Prop({required: false, type: Object}) options: HorizontalScrollOptionsInterface;
     @Prop({required: true, type: Array}) items: Array<HorizontalScrollEntityInterface>;
-    public realOptions: HorizontalScrollOptionsInterface;
 
     public currentIndex: number = 0;
     public trailingIndex: number = 0;

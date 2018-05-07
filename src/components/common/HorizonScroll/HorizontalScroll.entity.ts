@@ -5,9 +5,3 @@ export interface HorizontalScrollEntityInterface {
   link?: string;
 }
 
-export class HorizontalScrollOptions {
-}
-
-export interface HorizontalScrollOptionsInterface {
-}
-
