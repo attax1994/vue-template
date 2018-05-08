@@ -4,7 +4,7 @@
     <div class="section-wrapper container">
 
       <section class="section">
-        <CourseFilter></CourseFilter>
+        <CourseFilter @change="handleFilterChange"></CourseFilter>
       </section>
 
       <button @click.stop="switchCourseListStyle">转换</button>
@@ -31,8 +31,11 @@
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
+  import {Route} from "vue-router";
+  import InteractionService from "@/persistence/service/Interaction.Service";
   import {CarouselOptionsInterface} from "@/components/common/Carousel/Carousel.entity";
   import {CourseListEntityInterface} from "@/components/course/CourseList/CourseList.entity";
+  import {FilterParams} from "@/components/course/CourseFilter/CourseFilter.entity";
 
   @Component({
     components: {
@@ -41,6 +44,19 @@
       CourseList: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseList/CourseList.vue'),
       CourseListSkeleton: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseList/CourseList.skeleton.vue'),
     },
+    beforeRouteUpdate(to: Route, from: Route, next) {
+      InteractionService.scroll(0, 496);
+
+      const queryParams = to.query;
+
+      // update list data
+      this.CourseListReady = false;
+      setTimeout(() => {
+        this.CourseListReady = true;
+      }, 1000);
+
+      next();
+    }
   })
   export default class Courses extends Vue {
     public CarouselOptions: CarouselOptionsInterface = {
@@ -76,9 +92,17 @@
       }, 2000);
     }
 
+    public handleFilterChange(value: FilterParams) {
+      // restore page when new route comes from filter
+      delete value.page;
+      this.currentPage = 1;
+      this.$router.push({path: '/course', query: value as any});
+      return this;
+    }
+
     public handlePageChange(page: number) {
-      console.log(page);
-      window.scroll(0, 496);
+      this.$router.push({path: '/course', query: Object.assign({}, this.$route.query, {page: page.toString()})});
+      return this;
     }
 
     public switchCourseListStyle() {
@@ -88,6 +112,7 @@
 
     private _initCourseListCollapse() {
       this.CourseListCollapsed = window.innerWidth > 1000;
+      return this;
     }
 
   }

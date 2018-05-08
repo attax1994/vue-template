@@ -28,7 +28,7 @@
   })
   export default class ItemListSkeleton extends Vue {
     @Prop({required: false, type: Boolean, default: false}) collapsed;
-    public counter = Array(4).fill(0);
+    public counter = Array(8).fill(0);
   }
 </script>
 

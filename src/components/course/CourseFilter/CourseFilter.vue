@@ -29,6 +29,7 @@
   import {Component, Vue} from 'vue-property-decorator';
   import {Route} from "vue-router";
   import UtilService from "@/persistence/service/Util.Service";
+  import {FilterParams} from "./CourseFilter.entity";
 
   @Component({
     name: 'CourseFilter',
@@ -60,18 +61,15 @@
     }
 
     public handleCategoryChange(category: string) {
-      const previousQuery = UtilService.shallowClone(this.$route.query);
-      this.$router.push({path: '/course', query: Object.assign(previousQuery, {category})});
+      this.$emit('change', Object.assign({}, this.$route.query, {category}));
     }
 
     public handleCourseTypeChange(courseType: string) {
-      const previousQuery = UtilService.shallowClone(this.$route.query);
-      this.$router.push({path: '/course', query: Object.assign(previousQuery, {courseType})});
+      this.$emit('change', Object.assign({}, this.$route.query, {courseType}));
     }
 
     public handlerSortChange(value: { orderBy: string, ascend: string }) {
-      const previousQuery = UtilService.shallowClone(this.$route.query);
-      this.$router.push({path: '/course', query: Object.assign(previousQuery, value)});
+      this.$emit('change', Object.assign({}, this.$route.query, value));
     }
 
     private _refreshQueryParams(params: FilterParams) {
@@ -84,12 +82,6 @@
     }
   }
 
-  export interface FilterParams {
-    category?: string;
-    courseType?: string;
-    orderBy?: string;
-    ascend?: boolean | string;
-  }
 </script>
 
 <style scoped lang="scss">
