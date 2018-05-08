@@ -1,7 +1,7 @@
 <template>
   <div class="category-index-wrapper shadow-2">
     <div class="category-index-title">
-      <router-link class="black-link no-underline" target="_blank" to="/course">
+      <router-link class="black-link no-underline" to="/course">
         <i class="el-icon-tickets"></i>课程分类<i class="el-icon-arrow-down"></i>
       </router-link>
     </div>
@@ -14,7 +14,7 @@
             <div class="menu-item-title clear-fix">
               <div class="title-text">
                 <router-link class="black-link no-underline" :to="'/course?category=' + firstLevel.id"
-                             :target="firstLevel.target || '_blank'">
+                             :target="firstLevel.target">
                   {{firstLevel.title}}
                 </router-link>
               </div>
@@ -30,7 +30,7 @@
 
                   <div class="category-aside-title">
                     <router-link class="black-link no-underline" :to="'/course?category=' + secondLevel.id"
-                                 :target="secondLevel.target || '_blank'">
+                                 :target="secondLevel.target">
                       <b>{{secondLevel.title}}</b>
                     </router-link>
                   </div>
@@ -38,7 +38,7 @@
                   <div class="category-aside-content" v-if="secondLevel.children">
                     <template v-for="thirdLevel in secondLevel.children">
                       <router-link class="black-link no-underline" :to="'/course?category=' + thirdLevel.id"
-                                   :target="thirdLevel.target || '_blank'">{{thirdLevel.title}}
+                                   :target="thirdLevel.target">{{thirdLevel.title}}
                       </router-link>
                     </template>
                   </div>
@@ -90,7 +90,7 @@
   @import "../../../assets/theme/theme";
 
   $category-main-menu-width: 200px;
-  $transition-delay: .2s;
+  $transition-delay: .3s;
 
   .category-index-wrapper {
     position: relative;
@@ -132,7 +132,7 @@
       .category-index-content {
         opacity: 1;
         visibility: visible;
-        transition: opacity .3s ease $transition-delay;
+        transition: opacity .2s ease $transition-delay;
       }
     }
   }
@@ -141,7 +141,7 @@
     .category-main-menu-item {
       width: $category-main-menu-width;
       border-bottom: 1px solid rgb(229, 229, 229);
-      transition: background-color .3s ease-out;
+      transition: background-color .2s ease-out;
       &:last-child {
         border-bottom: none;
       }
@@ -153,7 +153,7 @@
         .title-icon {
           float: right;
           transform-origin: 50% 50%;
-          transition: transform .3s $material-timing-function $transition-delay;
+          transition: transform .2s $material-timing-function $transition-delay;
         }
       }
       &:hover {
@@ -164,9 +164,8 @@
           }
         }
         .category-menu-aside {
-          visibility: visible;
           opacity: 1;
-          transition: opacity .3s ease-out $transition-delay;
+          transform: scale(1, 1);
         }
       }
     }
@@ -176,13 +175,15 @@
     position: absolute;
     top: 0;
     left: $category-main-menu-width;
-    width: 600px;
+    width: 50vw;
+    max-width: 600px;
     min-height: 400px;
     background-color: white;
     font-size: $font-size-sm;
     line-height: 24px;
     opacity: 0;
-    visibility: hidden;
+    transform: scale(1, 0);
+    transition: transform 0s linear $transition-delay, opacity .2s ease-out $transition-delay;
     ul {
       padding-top: 12px;
       padding-bottom: 12px;
@@ -199,7 +200,7 @@
         }
         .category-aside-content {
           display: inline-block;
-          width: calc(100% - 8rem);
+          width: calc(100% - 7rem);
           a {
             display: inline-block;
             padding-right: 1rem;
