@@ -1,4 +1,4 @@
-export interface ItemListEntityInterface {
+export interface CourseListEntityInterface {
   title: string;
   content: string;
   imageUrl: string;

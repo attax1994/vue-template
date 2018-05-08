@@ -2,7 +2,9 @@
   <div class="container">
     <transition name="skeleton" mode="out-in">
       <div class="course-detail section-wrapper" v-if="isDetailReady" key="course-detail">
-        <CourseLocation :category="'1-1-2'" courseTitle="当前"></CourseLocation>
+        <section class="section">
+          <CourseLocation :category="'1-1-2'" courseTitle="当前"></CourseLocation>
+        </section>
 
         <section class="information section">
           <img src="@/assets/img/index/banner.jpg">
@@ -79,7 +81,7 @@
     components: {
       CourseIndex: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseIndex/CourseIndex.vue'),
       CourseDetailSkeleton: () => import(/* webpackChunkName: "group-course" */ '@/views/Course/CourseDetail/CourseDetail.skeleton.vue'),
-      CourseLocation: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseLocation/CourseLocation.vue'),
+      CourseLocation: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CategoryLocation/CategoryLocation.vue'),
     },
   })
   export default class CourseDetail extends Vue {

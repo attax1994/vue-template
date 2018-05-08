@@ -1,11 +1,9 @@
 import axios from 'axios';
 import {ActionContext} from "vuex";
-import {Subject} from "rxjs/Subject";
 
 export interface CourseStateInterface {
   version: number;
   categoryItems: Array<any>;
-  categoryItems$: Subject<any>;
 }
 
 export default {
@@ -13,13 +11,11 @@ export default {
   state: {
     version: 0,
     categoryItems: [],
-    categoryItems$: new Subject<any>(),
   },
   getters: {},
   mutations: {
     setCategoryItems(state: CourseStateInterface, payload: Array<any>) {
       state.categoryItems = payload;
-      state.categoryItems$.next(payload);
     },
     setCategoryVersion(state: CourseStateInterface, version: number) {
       state.version = version;

@@ -2,7 +2,8 @@
   <div class="list-wrapper">
     <transition name="list-change" mode="out-in">
 
-      <section class="list" :class="{collapsed: collapsed}" :key="collapsed? 'course-list-collapsed':'course-list-full'">
+      <section class="list" :class="{collapsed: collapsed}"
+               :key="collapsed? 'course-list-collapsed':'course-list-full'">
         <div class="item elevation-2 shadow-8 hover-scale" v-for="item in items">
           <router-link class="black-link" :to="item.link || '/'">
             <div class="image">
@@ -30,14 +31,14 @@
 
 <script lang="ts">
   import {Component, Prop, Vue} from 'vue-property-decorator';
-  import {ItemListEntityInterface} from './CourseList.entity';
+  import {CourseListEntityInterface} from './CourseList.entity';
 
   @Component({
     name: 'CourseList',
   })
   export default class ItemList extends Vue {
     @Prop({required: false, type: Boolean, default: true}) collapsed: boolean;
-    @Prop({required: false, type: Array, default: () => []}) items: Array<ItemListEntityInterface>;
+    @Prop({required: false, type: Array, default: () => []}) items: Array<CourseListEntityInterface>;
 
   }
 </script>

@@ -8,6 +8,8 @@ import Tabs from 'element-ui/lib/tabs.js';
 import TabPane from 'element-ui/lib/tab-pane.js';
 import Tree from 'element-ui/lib/tree.js';
 import ToolTip from 'element-ui/lib/tooltip.js';
+import RadioGroup from 'element-ui/lib/radio-group.js';
+import RadioButton from 'element-ui/lib/radio-button.js';
 
 Vue.use(Icon);
 Vue.use(Dialog);
@@ -19,3 +21,7 @@ Vue.use(ToolTip);
 // 标签页
 Vue.use(Tabs);
 Vue.use(TabPane);
+// 单选按钮
+Vue.use(RadioGroup);
+Vue.use(RadioButton);
+

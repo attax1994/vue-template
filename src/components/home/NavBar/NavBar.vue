@@ -38,7 +38,7 @@
     components: {
       DashDialog: () => import(/* webpackChunkName: "group-navbar" */ '@/components/home/DashDialog/DashDialog.vue'),
       OptionPanel: () => import(/* webpackChunkName: "group-navbar" */ '@/components/common/OptionPanel/OptionPanel.vue'),
-      CategoryIndex: () => import(/* webpackChunkName: "group-navbar" */ '@/components/common/CategoryIndex/CategoryIndex.vue'),
+      CategoryIndex: () => import(/* webpackChunkName: "group-navbar" */ '@/components/course/CategoryIndex/CategoryIndex.vue'),
     },
     computed: {
       ...mapGetters({

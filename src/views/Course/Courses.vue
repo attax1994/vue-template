@@ -3,19 +3,27 @@
     <CarouselBlock :options="CarouselOptions" style="height: 400px;"></CarouselBlock>
     <div class="section-wrapper container">
 
-      <button @click.stop="switchCourseListStyle">转换</button>
-      <transition name="skeleton" mode="out-in">
-        <CourseList :collapsed="CourseListCollapsed" :items="CourseListItems" v-if="CourseListReady"></CourseList>
-        <CourseListSkeleton :collapsed="CourseListCollapsed" v-else></CourseListSkeleton>
-      </transition>
+      <section class="section">
+        <CourseFilter></CourseFilter>
+      </section>
 
-      <el-pagination
-        @current-change="handleCurrentChange"
-        :current-page.sync="currentPage"
-        :page-size="12"
-        layout="prev, pager, next, jumper"
-        :total="120">
-      </el-pagination>
+      <button @click.stop="switchCourseListStyle">转换</button>
+      <section class="section">
+        <transition name="skeleton" mode="out-in">
+          <CourseList :collapsed="CourseListCollapsed" :items="CourseListItems" v-if="CourseListReady"></CourseList>
+          <CourseListSkeleton :collapsed="CourseListCollapsed" v-else></CourseListSkeleton>
+        </transition>
+      </section>
+
+      <section class="section">
+        <el-pagination
+          @current-change="handlePageChange"
+          :current-page.sync="currentPage"
+          :page-size="12"
+          layout="prev, pager, next, jumper"
+          :total="120">
+        </el-pagination>
+      </section>
 
     </div>
   </div>
@@ -24,13 +32,14 @@
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
   import {CarouselOptionsInterface} from "@/components/common/Carousel/Carousel.entity";
-  import {ItemListEntityInterface} from "@/components/course/CourseList/CourseList.entity";
+  import {CourseListEntityInterface} from "@/components/course/CourseList/CourseList.entity";
 
   @Component({
     components: {
       CarouselBlock: () => import(/* webpackChunkName: "group-carousel" */ '@/components/common/Carousel/CarouselBlock.vue'),
-      CourseList: () => import(/* webpackChunkName: "group-CourseList" */ '@/components/course/CourseList/CourseList.vue'),
-      CourseListSkeleton: () => import(/* webpackChunkName: "group-CourseList" */ '@/components/course/CourseList/CourseList.skeleton.vue'),
+      CourseFilter: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseFilter/CourseFilter.vue'),
+      CourseList: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseList/CourseList.vue'),
+      CourseListSkeleton: () => import(/* webpackChunkName: "group-course" */ '@/components/course/CourseList/CourseList.skeleton.vue'),
     },
   })
   export default class Courses extends Vue {
@@ -46,7 +55,7 @@
 
     public CourseListReady: boolean = false;
     public CourseListCollapsed: boolean = true;
-    public CourseListItems: Array<ItemListEntityInterface> = Array(8).fill({
+    public CourseListItems: Array<CourseListEntityInterface> = Array(8).fill({
       title: '标题',
       content: '123',
       imageUrl: 'img/index/banner.jpg',
@@ -67,7 +76,7 @@
       }, 2000);
     }
 
-    public handleCurrentChange(page: number) {
+    public handlePageChange(page: number) {
       console.log(page);
       window.scroll(0, 496);
     }
