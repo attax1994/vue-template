@@ -74,8 +74,7 @@
         &.link-active {
           background: #464E5D;
           &:before {
-            left: 0;
-            right: 0;
+            transform: none;
           }
         }
       }

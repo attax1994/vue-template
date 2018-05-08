@@ -9,13 +9,13 @@
     <div class="menu">
       <div class="container">
         <div class="left">
+
           <div class="logo" style="width: 200px;height: 48px; background: lightblue;">Logo</div>
           <div class="category-index-wrapper">
             <CategoryIndex></CategoryIndex>
           </div>
 
         </div>
-
 
         <div class="right">
           <el-button type="success">微信登陆</el-button>

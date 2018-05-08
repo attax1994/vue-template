@@ -7,15 +7,16 @@
     position: absolute;
     top: 0;
     height: 4px;
-    left: 50%;
-    right: 50%;
+    left: 0;
+    right: 0;
     background: $primary;
-    transition: left .3s $material-timing-function, right .3s $material-timing-function;
+    transform: scale(0, 1);
+    transform-origin: 50% 50%;
+    transition: transform .3s $material-timing-function;
   }
   &:hover {
     &:before {
-      left: 0;
-      right: 0;
+      transform: none;
     }
   }
 }
