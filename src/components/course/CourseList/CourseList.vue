@@ -2,16 +2,16 @@
   <div class="list-wrapper">
     <transition name="list-change" mode="out-in">
 
-      <section class="list" :class="{collapsed: collapsed}" :key="collapsed? 'item-list-collapsed':'item-list-full'">
+      <section class="list" :class="{collapsed: collapsed}" :key="collapsed? 'course-list-collapsed':'course-list-full'">
         <div class="item elevation-2 shadow-8 hover-scale" v-for="item in items">
           <router-link class="black-link" :to="item.link || '/'">
             <div class="image">
-              <img class="hover-scale-lg" :src="item.imageUrl | FilePathParser">
+              <img :src="item.imageUrl | FilePathParser">
             </div>
 
             <div class="text">
               <div class="title ellipsis">{{item.title}}</div>
-              <div class="content">{{item.content}}</div>
+              <div class="content" :class="{ellipsis: collapsed}">{{item.content}}</div>
               <div class="actions">
                 <span class="el-icon-star-on"></span>
                 <span>{{item.starCount || 0}} </span>
