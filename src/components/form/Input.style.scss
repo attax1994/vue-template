@@ -106,10 +106,6 @@ $IndicatorWidth: 3rem;
     height: $InputHeight;
     border: none;
     border-bottom: 1px solid $lightLine;
-    &:focus {
-      border: none;
-      border-bottom: 1px solid $primary;
-    }
   }
   .input-indicator {
     transform: translate(0, $WrapperTop);
