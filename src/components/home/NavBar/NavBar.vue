@@ -37,16 +37,12 @@
     name: 'NavBar',
     components: {
       DashDialog: () => import(/* webpackChunkName: "group-navbar" */ '@/components/home/DashDialog/DashDialog.vue'),
-      OptionPanel: () => import(/* webpackChunkName: "group-navbar" */ '@/components/common/OptionPanel/OptionPanel.vue'),
       CategoryIndex: () => import(/* webpackChunkName: "group-navbar" */ '@/components/course/CategoryIndex/CategoryIndex.vue'),
     },
     computed: {
       ...mapGetters({
         isDashBoardActive: 'dashboard/isDashBoardActive',
       }),
-      ...mapState({
-        courseCategoryItems: (state: any): any => state.course.categoryItems,
-      })
     }
   })
   export default class NavBar extends Vue {
@@ -54,13 +50,6 @@
     public DashDialogOptions: DashDialogOptionsInterface = {
       abstract: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum LoreLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumm ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
       content: ['段落1', '段落2'],
-    };
-
-    public courseCategoryItems: Array<OptionPanelItemInterface>;
-    public OptionPanelOptions: OptionPanelInterface = {
-      height: '48px',
-      theme: 'light',
-      baseUrl: '/course',
     };
 
     constructor() {

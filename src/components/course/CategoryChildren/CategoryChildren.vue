@@ -70,11 +70,13 @@
     font-size: $font-size-md;
     .label {
       display: inline-block;
+      vertical-align: top;
       width: 7rem;
       padding-right: 1rem;
     }
     .items {
       display: inline-block;
+      vertical-align: top;
       width: calc(100% - 7rem);
       span {
         display: inline-block;

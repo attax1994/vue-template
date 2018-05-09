@@ -64,7 +64,6 @@
   @import "../../../assets/theme/theme";
 
   .el-breadcrumb {
-    height: 18px;
     line-height: 18px;
     font-size: $font-size-md;
   }

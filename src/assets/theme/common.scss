@@ -48,10 +48,14 @@ img {
   text-overflow: ellipsis;
 }
 
-.clear-fix:after {
-  content: '';
-  display: table;
-  clear: both;
+.clear-fix {
+  &:before, &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 a {
