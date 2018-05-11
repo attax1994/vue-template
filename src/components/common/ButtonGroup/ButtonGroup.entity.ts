@@ -4,9 +4,9 @@ export interface ButtonGroupEntity {
 }
 
 export class ButtonGroupOptions {
-  items: Array<ButtonGroupEntity> = [];
-  style: 'border' | 'underline' = 'border';
-  asyncEvent: boolean = false;
+  items: Array<ButtonGroupEntity> = []
+  style: 'border' | 'underline' = 'border'
+  asyncEvent: boolean = false
 }
 
 export interface ButtonGroupOptionsInterface {

@@ -54,8 +54,8 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from "vue-property-decorator";
-  import {mapState} from "vuex";
+  import {Component, Vue} from 'vue-property-decorator'
+  import {mapState} from 'vuex'
 
   @Component({
     name: 'CategoryIndex',
@@ -64,13 +64,13 @@
         courseCategoryItems: (state: any): any => state.course.categoryItems,
       }),
       asideMenuHeight() {
-        return this.courseCategoryItems.length * 49 - 1;
+        return this.courseCategoryItems.length * 49 - 1
       },
-    }
+    },
   })
   export default class CategoryIndex extends Vue {
-    public courseCategoryItems: Array<CategoryIndexEntity>;
-    public asideMenuHeight: number;
+    public courseCategoryItems: Array<CategoryIndexEntity>
+    public asideMenuHeight: number
 
   }
 

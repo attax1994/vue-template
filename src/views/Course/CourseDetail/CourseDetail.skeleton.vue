@@ -53,10 +53,10 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
+  import {Component, Vue} from 'vue-property-decorator'
 
   @Component({
-    name: 'CourseDetailSkeleton'
+    name: 'CourseDetailSkeleton',
   })
   export default class CourseDetailSkeleton extends Vue {
 

@@ -76,9 +76,9 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
-  import {CourseStateInterface} from "@/persistence/store/course";
-  import {Subscription} from "rxjs/Subscription";
+  import {Component, Vue} from 'vue-property-decorator'
+  import {CourseStateInterface} from '@/persistence/store/course'
+  import {Subscription} from 'rxjs/Subscription'
 
   @Component({
     components: {
@@ -88,13 +88,13 @@
     },
   })
   export default class CourseDetail extends Vue {
-    public isDetailReady: boolean = false;
-    public isFavorite: boolean = false;
+    public isDetailReady: boolean = false
+    public isFavorite: boolean = false
 
     mounted() {
       setTimeout(() => {
-        this.isDetailReady = true;
-      }, 2000);
+        this.isDetailReady = true
+      }, 2000)
     }
 
   }

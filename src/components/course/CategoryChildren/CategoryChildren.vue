@@ -18,45 +18,45 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
-  import {mapState} from "vuex";
-  import {CourseCategoryInterface} from "../Course.entity";
+  import {Component, Prop, Vue} from 'vue-property-decorator'
+  import {mapState} from 'vuex'
+  import {CourseCategoryInterface} from '../Course.entity'
 
   @Component({
-    name: "CategoryChildren",
+    name: 'CategoryChildren',
     computed: {
       ...mapState({
         '_courseCategoryItems': (state: any): any => state.course.categoryItems,
       }),
       currentCategory() {
-        return this._findCategory(this.category, this._courseCategoryItems);
-      }
-    }
+        return this._findCategory(this.category, this._courseCategoryItems)
+      },
+    },
   })
   export default class CourseCategoryChildren extends Vue {
-    @Prop({required: false, type: String, default: ''}) category: string;
+    @Prop({required: false, type: String, default: ''}) category: string
 
-    public currentCategory: Array<CourseCategoryInterface>;
-    private _courseCategoryItems: Array<CourseCategoryInterface>;
+    public currentCategory: Array<CourseCategoryInterface>
+    private _courseCategoryItems: Array<CourseCategoryInterface>
 
     private _findCategory(category: string = '', categoryItems: Array<CourseCategoryInterface> = []) {
-      const levels = category.split('-').filter((value) => value);
+      const levels = category.split('-').filter((value) => value)
       let parent: any = {children: categoryItems},
-        previous: any;
+        previous: any
 
       for (let i = 0; i < levels.length; i++) {
         if (parent && parent.children) {
-          previous = parent;
+          previous = parent
           parent = parent.children.find((value: CourseCategoryInterface) => {
-            return category.startsWith(value.id);
-          });
+            return category.startsWith(value.id)
+          })
         }
       }
 
       if (parent && parent.children) {
-        return parent;
+        return parent
       } else {
-        return previous;
+        return previous
       }
     }
   }

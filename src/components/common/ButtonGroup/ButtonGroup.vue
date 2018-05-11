@@ -12,79 +12,79 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import {ButtonGroupEntity, ButtonGroupOptions, ButtonGroupOptionsInterface} from "./ButtonGroup.entity";
-  import EventsService from "@/persistence/service/Events.Service";
-  import {Provided} from "../../../persistence/injection/ModuleManager";
+  import {Component, Prop, Vue} from 'vue-property-decorator'
+  import {ButtonGroupEntity, ButtonGroupOptions, ButtonGroupOptionsInterface} from './ButtonGroup.entity'
+  import EventsService from '@/persistence/service/Events.Service'
+  import {Provided} from '../../../persistence/injection/ModuleManager'
 
   @Component({
     name: 'ButtonGroup',
     computed: {
       realOptions(): ButtonGroupOptionsInterface {
         this.$nextTick(() => {
-          this._chooseByIndex(0);
-        });
-        return Object.assign(new ButtonGroupOptions(), this.options);
+          this._chooseByIndex(0)
+        })
+        return Object.assign(new ButtonGroupOptions(), this.options)
       },
-    }
+    },
   })
   export default class ButtonGroup extends Vue {
-    @Prop({required: true, type: Object}) options: ButtonGroupOptionsInterface;
-    private _indicator: HTMLElement | null;
+    @Prop({required: true, type: Object}) options: ButtonGroupOptionsInterface
+    private _indicator: HTMLElement | null
 
-    @Provided(EventsService) private _eventsService: EventsService;
+    @Provided(EventsService) private _eventsService: EventsService
 
     constructor() {
-      super();
+      super()
     }
 
     mounted() {
-      this._indicator = document.querySelector('.button-group-wrapper .indicator') as HTMLElement;
+      this._indicator = document.querySelector('.button-group-wrapper .indicator') as HTMLElement
 
       if (this.options.asyncEvent) {
         this._eventsService.on('button-group', (index: number) => {
           setTimeout(() => {
-            this._chooseByIndex(index);
+            this._chooseByIndex(index)
           }, 100)
-        });
+        })
       } else {
-        this._chooseByIndex(0);
+        this._chooseByIndex(0)
       }
     }
 
     public chooseTitle(event: MouseEvent, item: ButtonGroupEntity) {
-      const current = (<Node>event.target).parentNode as HTMLElement;
-      this._chooseItem(current, item);
+      const current = (<Node>event.target).parentNode as HTMLElement
+      this._chooseItem(current, item)
     }
 
     private _chooseByIndex(index: number) {
-      const current = document.querySelectorAll('.button-group-wrapper>.button-group-list>.button-group-item')[index] as HTMLElement;
-      this._chooseItem(current, this.options.items[index]);
-      return this;
+      const current = document.querySelectorAll('.button-group-wrapper>.button-group-list>.button-group-item')[index] as HTMLElement
+      this._chooseItem(current, this.options.items[index])
+      return this
     }
 
     private _chooseItem(current: HTMLElement, data: ButtonGroupEntity) {
-      const previous = document.querySelector('.button-group-wrapper>.button-group-list>.button-group-item.selected');
+      const previous = document.querySelector('.button-group-wrapper>.button-group-list>.button-group-item.selected')
 
       if (previous) {
-        if (current.textContent === previous.textContent) return;
-        previous.classList.remove('selected');
+        if (current.textContent === previous.textContent) return
+        previous.classList.remove('selected')
       }
 
-      current.classList.add('selected');
+      current.classList.add('selected')
 
       if (this.options.style === 'underline') {
         requestAnimationFrame(() => {
           const left = current.offsetLeft,
             width = current.clientWidth,
-            s = this._indicator.style;
-          s.transform = `translate(${left}px, 0)`;
-          s.width = `${width}px`;
-        });
+            s = this._indicator.style
+          s.transform = `translate(${left}px, 0)`
+          s.width = `${width}px`
+        })
       }
 
-      this.$emit('choose', data);
-      return this;
+      this.$emit('choose', data)
+      return this
     }
 
   }
