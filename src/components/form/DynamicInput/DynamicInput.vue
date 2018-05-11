@@ -23,66 +23,66 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
-  import {FormValidatorFunction} from "../FormValidators";
+  import {Component, Prop, Vue} from 'vue-property-decorator'
+  import {FormValidatorFunction} from '../FormValidators'
 
   @Component({
     name: 'DynamicInput',
     computed: {
       currentValue: {
         set(value) {
-          this.$emit('input', value);
+          this.$emit('input', value)
         },
         get() {
-          return this.value;
-        }
-      }
+          return this.value
+        },
+      },
     },
     components: {
       TextInput: () => import(/* webpackChunkName: "group-form" */ '@/components/form/TextInput/TextInput.vue'),
-    }
+    },
   })
   export default class DynamicInput extends Vue {
-    @Prop({required: false, type: Array, default: () => []}) value: Array<string>;
-    public currentValue: Array<string>;
-    @Prop({required: false, type: String, default: '项目'}) label: string;
-    @Prop({required: false, type: String, default: '项目'}) name: string;
-    @Prop({required: false, type: Array, default: () => []}) validators: Array<FormValidatorFunction>;
+    @Prop({required: false, type: Array, default: () => []}) value: Array<string>
+    public currentValue: Array<string>
+    @Prop({required: false, type: String, default: '项目'}) label: string
+    @Prop({required: false, type: String, default: '项目'}) name: string
+    @Prop({required: false, type: Array, default: () => []}) validators: Array<FormValidatorFunction>
 
-    private _statusGroup: Array<boolean>;
-    private _composedStatus: boolean;
+    private _statusGroup: Array<boolean>
+    private _composedStatus: boolean
 
     mounted() {
-      this._statusGroup = Array(this.value.length).fill(true);
-      this._composedStatus = true;
+      this._statusGroup = Array(this.value.length).fill(true)
+      this._composedStatus = true
     }
 
     public addItem() {
-      this.currentValue.push('');
-      this._statusGroup.push(true);
+      this.currentValue.push('')
+      this._statusGroup.push(true)
     }
 
     public removeItem(index: number) {
-      this.currentValue.splice(index, 1);
-      this._statusGroup.splice(index, 1);
+      this.currentValue.splice(index, 1)
+      this._statusGroup.splice(index, 1)
     }
 
     public statusChange(index: number, status: boolean) {
-      this._statusGroup[index] = status;
-      this._emitComposedStatus();
+      this._statusGroup[index] = status
+      this._emitComposedStatus()
     }
 
     private _emitComposedStatus() {
       const newStatus = this._statusGroup.reduce((accumulator: boolean, value: boolean) => {
         if (value) {
-          return accumulator;
+          return accumulator
         } else {
-          return false;
+          return false
         }
-      });
+      })
       if (this._composedStatus !== newStatus) {
-        this._composedStatus = newStatus;
-        this.$emit('status', this._composedStatus);
+        this._composedStatus = newStatus
+        this.$emit('status', this._composedStatus)
       }
     }
 
@@ -94,12 +94,13 @@
 
   .input-item {
     position: relative;
-    padding-right: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     .inline-actions {
       position: absolute;
       right: 0;
       top: 50%;
-      width: 4rem;
+      width: 2rem;
       opacity: 0;
       transform: translate(0, -50%);
       .inline-action {

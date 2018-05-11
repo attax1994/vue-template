@@ -10,7 +10,7 @@
 
       <section class="section">
         <transition :name="'fade-' + slideDirection" mode="out-in">
-          <div :key="courseStep">
+          <div :key="`course-create-${courseStep}`">
             <section v-if="courseStep === 1">
               <RadioBlock name="courseType"
                           label="1"
@@ -36,7 +36,7 @@
               <h1>{{courseType}}</h1>
             </section>
 
-            <section v-if="courseStep === 2">
+            <section class="input-section" v-if="courseStep === 2">
               <TextInput label="课程标题"
                          :max-length="20"
                          :validators="[Required()]"
@@ -44,7 +44,7 @@
               </TextInput>
             </section>
 
-            <section v-if="courseStep === 3">
+            <section class="input-section" v-if="courseStep === 3">
               <RichTextArea label="课程简述"
                             :max-length="200"
                             :validators="[Required()]"
@@ -52,7 +52,7 @@
               </RichTextArea>
             </section>
 
-            <section v-if="courseStep === 4">
+            <section class="input-section" v-if="courseStep === 4">
               <DynamicInput v-model="dynamicInputItems"
                             :validators="[Required()]"
                             @status="inputStatusHandler">
@@ -63,23 +63,25 @@
         </transition>
       </section>
 
-      <section class="section" style="text-align: center;">
-        <el-button type="info" @click="switchPreviousHandler" :disabled="courseStep<=1">
-          上一步
-        </el-button>
-        <el-button type="primary" @click="switchNextHandler"
-                   :disabled="!isNextValid" v-if="courseStep<4">
-          下一步
-        </el-button>
-        <el-button type="primary" :disabled="!isNextValid" v-else>完&nbsp;&nbsp;&nbsp;成</el-button>
-      </section>
+      <transition :name="'fade-' + slideDirection" mode="out-in">
+        <section class="section" style="text-align: center;" :key="`course-create-button-${courseStep}`">
+          <el-button type="info" @click="switchPreviousHandler" :disabled="courseStep<=1">
+            上一步
+          </el-button>
+          <el-button type="primary" @click="switchNextHandler"
+                     :disabled="!isNextValid" v-if="courseStep<4">
+            下一步
+          </el-button>
+          <el-button type="primary" :disabled="!isNextValid" v-else>完&nbsp;&nbsp;&nbsp;成</el-button>
+        </section>
+      </transition>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
-  import {Required} from '@/components/form/FormValidators';
+  import {Component, Vue} from 'vue-property-decorator'
+  import {Required} from '@/components/form/FormValidators'
 
   @Component({
     components: {
@@ -93,35 +95,35 @@
     },
     data() {
       return {
-        Required
+        Required,
       }
-    }
+    },
   })
   export default class CreateCourse extends Vue {
-    public courseStep: number = 1;
-    public slideDirection: 'next' | 'previous' = 'next';
+    public courseStep: number = 1
+    public slideDirection: 'next' | 'previous' = 'next'
 
-    public dynamicInputItems = ['', '', ''];
-    public courseType: string = '1';
-    public courseTitle: string = '';
-    public courseDescription: string = '';
+    public dynamicInputItems = Array(3).fill('')
+    public courseType: string = '1'
+    public courseTitle: string = ''
+    public courseDescription: string = ''
 
-    public isNextValid: boolean = true;
+    public isNextValid: boolean = true
 
     public inputStatusHandler(status: boolean) {
-      this.isNextValid = status;
+      this.isNextValid = status
     }
 
     public switchNextHandler() {
-      this.courseStep >= 4 ? this.courseStep = 4 : this.courseStep++;
-      this.slideDirection = 'next';
-      this.isNextValid = true;
+      this.courseStep < 4 && this.courseStep++
+      this.slideDirection = 'next'
+      this.isNextValid = true
     }
 
     public switchPreviousHandler() {
-      this.courseStep--;
-      this.slideDirection = 'previous';
-      this.isNextValid = true;
+      this.courseStep > 0 && this.courseStep--
+      this.slideDirection = 'previous'
+      this.isNextValid = true
     }
   }
 </script>
@@ -135,6 +137,11 @@
 
   .col-4 {
     padding: 0 1rem;
+  }
+
+  .input-section {
+    max-width: 800px;
+    margin: 0 auto;
   }
 
 </style>
