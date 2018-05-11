@@ -15,7 +15,7 @@
   import {Component, Prop, Vue} from 'vue-property-decorator'
   import {ButtonGroupEntity, ButtonGroupOptions, ButtonGroupOptionsInterface} from './ButtonGroup.entity'
   import EventsService from '@/persistence/service/Events.Service'
-  import {Provided} from '../../../persistence/injection/ModuleManager'
+  import {Provided} from '@/persistence/injection/ModuleManager'
 
   @Component({
     name: 'ButtonGroup',
