@@ -1,7 +1,8 @@
-import {RouteConfig} from "vue-router";
-import BlogRouter from "@/views/Bundle/Blog/Blog.router";
-import CourseRouter from "@/views/Course/Course.router";
-import ManagementRouter from "@/views/Management/Management.router";
+import {RouteConfig} from 'vue-router'
+import BlogRouter from '@/views/Bundle/Blog/Blog.router'
+import CourseRouter from '@/views/Course/Course.router'
+import ManagementRouter from '@/views/Management/Management.router'
+import UserCenterRouter from '@/views/UserInfo/UserCenter.router'
 
 const MainRouter: RouteConfig = {
   path: '/',
@@ -11,6 +12,7 @@ const MainRouter: RouteConfig = {
     BlogRouter,
     CourseRouter,
     ManagementRouter,
+    UserCenterRouter,
     {
       path: '',
       name: 'home',
@@ -22,7 +24,7 @@ const MainRouter: RouteConfig = {
       meta: {title: '关于我们'},
       component: () => import(/* webpackChunkName: "group-main" */ '@/views/Main/About.vue'),
     },
-  ]
-};
+  ],
+}
 
-export default MainRouter;
+export default MainRouter

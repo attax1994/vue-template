@@ -24,6 +24,8 @@ router.beforeEach((to: Route, from: Route, next: Function) => {
   // change title
   document.title = to.meta.title || 'DaXiaoke';
 
+  console.log(to);
+
   next();
 });
 
