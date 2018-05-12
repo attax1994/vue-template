@@ -53,7 +53,7 @@
     }
 
     public chooseTitle(event: MouseEvent, item: ButtonGroupEntity) {
-      const current = (<Node>event.target).parentNode as HTMLElement
+      const current = ( event.target as Node).parentNode as HTMLElement
       this._chooseItem(current, item)
     }
 
