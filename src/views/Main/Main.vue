@@ -6,9 +6,10 @@
         <div class="container">
           <router-link class="nav-link no-underline top-line" exact-active-class="link-active" to="/">首页</router-link>
           <router-link class="nav-link no-underline top-line" active-class="link-active" to="/course" >课程</router-link>
-          <router-link class="nav-link no-underline top-line" active-class="link-active" to="/blog">首页2</router-link>
-          <router-link class="nav-link no-underline top-line" active-class="link-active" to="/blog">首页3</router-link>
-          <router-link class="nav-link no-underline top-line" active-class="link-active" to="/about">关于</router-link>
+          <router-link class="nav-link no-underline top-line" active-class="link-active" to="/blog">讲课</router-link>
+          <router-link class="nav-link no-underline top-line" active-class="link-active" to="/blog">学课</router-link>
+          <router-link class="nav-link no-underline top-line" active-class="link-active" to="/blog">软件</router-link>
+          <router-link class="nav-link no-underline top-line" active-class="link-active" to="/about">解决方案</router-link>
         </div>
       </div>
     </NavBar>

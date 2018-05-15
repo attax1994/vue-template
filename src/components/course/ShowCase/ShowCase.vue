@@ -1,6 +1,6 @@
 <template>
   <div class="show-case">
-    <h1>选项</h1>
+    <h1>收费课程</h1>
   </div>
 </template>
 

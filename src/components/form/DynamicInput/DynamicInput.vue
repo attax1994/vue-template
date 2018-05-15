@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="actions">
-      <el-button type="text" @click.stop="addItem()"><i class="el-icon-circle-plus-outline"></i>添加一个项目</el-button>
+      <el-button type="text" @click.stop="addItem()"><i class="el-icon-circle-plus-outline"></i>添加一个类型</el-button>
     </div>
   </div>
 </template>
@@ -45,7 +45,7 @@
   export default class DynamicInput extends Vue {
     @Prop({required: false, type: Array, default: () => []}) value: Array<string>
     public currentValue: Array<string>
-    @Prop({required: false, type: String, default: '项目'}) label: string
+    @Prop({required: false, type: String, default: '分类'}) label: string
     @Prop({required: false, type: String, default: '项目'}) name: string
     @Prop({required: false, type: Array, default: () => []}) validators: Array<FormValidatorFunction>
 

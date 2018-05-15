@@ -58,7 +58,9 @@
                   </span>
                   <el-dropdown-menu slot="dropdown" style="margin-right:10px;">
                     <el-dropdown-item>查看我的授课</el-dropdown-item>
-                    <el-dropdown-item>创建一门课程</el-dropdown-item>
+                      <router-link to="/course/create" class="link-tag">
+                        <el-dropdown-item>创建一门课程</el-dropdown-item>
+                      </router-link>
                   </el-dropdown-menu>
                 </el-dropdown>
 

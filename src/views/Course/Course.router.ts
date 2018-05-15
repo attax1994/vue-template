@@ -19,6 +19,11 @@ const CourseRouter: RouteConfig = {
       name: 'CreateCourse',
       meta: {title: '创建课程'},
       component: () => import(/* webpackChunkName: "group-course" */ '@/views/Course/CreateCourse.vue'),
+    }, {
+      path: 'editCourse',
+      name: 'EditCourseDetail',
+      meta: {title: '编辑课程详情'},
+      component: () => import(/* webpackChunkName: "group-course" */ '@/views/Course/EditCourseDetail.vue')
     }
   ],
 };
