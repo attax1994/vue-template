@@ -1,4 +1,4 @@
-import {Injectable} from "@/persistence/injection/ModuleManager";
+import {Injectable} from '@/persistence/injection/ModuleManager'
 
 @Injectable()
 export default class UtilService {
@@ -8,13 +8,22 @@ export default class UtilService {
    * @return {string}
    */
   public static generateQueryParam(params: Object) {
-    let temp = '?';
+    let temp = '?'
     for (const key in params) {
       if (params.hasOwnProperty(key)) {
-        temp += `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}&`;
+        temp += `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}&`
       }
     }
-    return temp === '?' ? '' : temp.slice(0, -1);
+    return temp === '?' ? '' : temp.slice(0, -1)
+  }
+
+  /**
+   * 生成一个随机的key，用于在没有id作为key时候，v-for的key优化
+   * @param {string} suffix
+   * @return {string}
+   */
+  public static generateRandomKey(suffix: string = '') {
+    return `${suffix}-${Math.floor(1000 * Math.random())}`
   }
 
   /**
@@ -23,11 +32,11 @@ export default class UtilService {
    * @return {{}}
    */
   public static shallowClone(source: Object) {
-    let temp = {};
+    let temp = {}
     for (const key in source) {
-      if (source.hasOwnProperty(key)) temp[key] = source[key];
+      if (source.hasOwnProperty(key)) temp[key] = source[key]
     }
-    return temp;
+    return temp
   }
 
   /**
@@ -37,27 +46,27 @@ export default class UtilService {
    */
   public static deepClone(source: any) {
     if (!(source instanceof Object)) {
-      return source;
+      return source
     }
 
-    let objectClone;
-    const Constructor = source.constructor;
+    let objectClone
+    const Constructor = source.constructor
     switch (Constructor) {
       case RegExp:
-        objectClone = new Constructor(source);
-        break;
+        objectClone = new Constructor(source)
+        break
       case Date:
-        objectClone = new Constructor(source.getTime());
-        break;
+        objectClone = new Constructor(source.getTime())
+        break
       default:
-        objectClone = new Constructor();
+        objectClone = new Constructor()
     }
 
     for (const prop in source) {
-      if (source.hasOwnProperty(prop)) objectClone[prop] = UtilService.deepClone(source[prop]);
+      if (source.hasOwnProperty(prop)) objectClone[prop] = UtilService.deepClone(source[prop])
     }
 
-    return objectClone;
+    return objectClone
   }
 
   /**
@@ -66,14 +75,14 @@ export default class UtilService {
    * @return {{}}
    */
   public static hasEmptyProperty(source: Object) {
-    let hasEmpty = false;
+    let hasEmpty = false
     for (const key in source) {
       if (source.hasOwnProperty(key) && !source[key]) {
-        hasEmpty = true;
-        break;
+        hasEmpty = true
+        break
       }
     }
-    return hasEmpty;
+    return hasEmpty
   }
 
   /**
@@ -82,12 +91,12 @@ export default class UtilService {
    * @return {{}}
    */
   public static eraseEmptyProperty(source: Object) {
-    const temp = UtilService.shallowClone(source);
+    const temp = UtilService.shallowClone(source)
     for (const key in temp) {
       if (temp.hasOwnProperty(key) && !temp[key]) {
-        delete temp[key];
+        delete temp[key]
       }
     }
-    return temp;
+    return temp
   }
 }

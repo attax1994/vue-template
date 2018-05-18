@@ -1,4 +1,4 @@
-import {RouteConfig} from "vue-router";
+import {RouteConfig} from 'vue-router'
 
 const DemoRouter: RouteConfig = {
   path: '/demo',
@@ -25,8 +25,12 @@ const DemoRouter: RouteConfig = {
       path: 'typing',
       name: 'typing',
       component: () => import(/* webpackChunkName: "group-demo" */ '@/views/Demo/Typing.demo.vue'),
+    }, {
+      path: 'exam',
+      name: 'exam',
+      component: () => import(/* webpackChunkName: "group-demo" */ '@/views/Demo/ExamSheet.demo.vue'),
     },
   ],
-};
+}
 
-export default DemoRouter;
+export default DemoRouter

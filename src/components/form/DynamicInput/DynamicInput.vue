@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="input-list">
       <div class="input-item" v-for="(inputItem, index) in currentValue">
-        <slot :item="inputItem" :index="index" :label="label">
+        <slot :item="currentValue[index]" :index="index" :label="label" :inputName="name">
           <text-input :label="label + (index + 1)"
                       :name="name + (index + 1)"
                       :max-length="50"
@@ -17,7 +17,9 @@
       </div>
     </div>
     <div class="actions">
-      <el-button type="text" @click.stop="addItem()"><i class="el-icon-circle-plus-outline"></i>添加一个类型</el-button>
+      <el-button type="text" @click.stop="addItem()"><i class="el-icon-circle-plus-outline"></i>
+        {{addButtonText}}
+      </el-button>
     </div>
   </div>
 </template>
@@ -25,12 +27,14 @@
 <script lang="ts">
   import {Component, Prop, Vue} from 'vue-property-decorator'
   import {FormValidatorFunction} from '../FormValidators'
+  import UtilService from '@/persistence/service/Util.Service'
 
   @Component({
     name: 'DynamicInput',
     computed: {
       currentValue: {
         set(value) {
+          console.log('set in dy')
           this.$emit('input', value)
         },
         get() {
@@ -43,11 +47,13 @@
     },
   })
   export default class DynamicInput extends Vue {
-    @Prop({required: false, type: Array, default: () => []}) value: Array<string>
+    @Prop({required: false, type: Array, default: () => []}) value: Array<any>
+    @Prop({required: false, type: [String, Object], default: ''}) defaultItem: any
     public currentValue: Array<string>
-    @Prop({required: false, type: String, default: '分类'}) label: string
-    @Prop({required: false, type: String, default: '项目'}) name: string
+    @Prop({required: false, type: [String, Object], default: '分类'}) label: string
+    @Prop({required: false, type: String, default: 'defaultInput'}) name: string
     @Prop({required: false, type: Array, default: () => []}) validators: Array<FormValidatorFunction>
+    @Prop({required: false, type: String, default: '添加'}) addButtonText: string
 
     private _statusGroup: Array<boolean>
     private _composedStatus: boolean
@@ -58,18 +64,22 @@
     }
 
     public addItem() {
-      this.currentValue.push('')
+      this.$set(this.currentValue, this.currentValue.length, UtilService.deepClone(this.defaultItem))
       this._statusGroup.push(true)
+      this.$emit('change', this.currentValue)
     }
 
     public removeItem(index: number) {
-      this.currentValue.splice(index, 1)
+      this.$delete(this.currentValue, index)
       this._statusGroup.splice(index, 1)
+      this.$emit('change', this.currentValue)
     }
 
     public statusChange(index: number, status: boolean) {
-      this._statusGroup[index] = status
-      this._emitComposedStatus()
+      if (this.validators.length) {
+        this._statusGroup[index] = status
+        this._emitComposedStatus()
+      }
     }
 
     private _emitComposedStatus() {
