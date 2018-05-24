@@ -91,7 +91,7 @@ export default class UtilService {
    * @return {{}}
    */
   public static eraseEmptyProperty(source: Object) {
-    const temp = UtilService.shallowClone(source)
+    const temp = Object.assign({}, source)
     for (const key in temp) {
       if (temp.hasOwnProperty(key) && !temp[key]) {
         delete temp[key]
