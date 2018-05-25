@@ -27,6 +27,10 @@
               <router-link to="/demo/typing" active-class="router-active">Typing</router-link>
             </div>
 
+            <div class="menu-item">
+              <router-link to="/demo/exam" active-class="router-active">Exam</router-link>
+            </div>
+
           </div>
         </div>
 
