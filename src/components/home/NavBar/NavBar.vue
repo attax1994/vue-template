@@ -40,12 +40,18 @@
                             <el-card shadow="hover">
                                 <img src="../../../assets/img/user/QR_code.png" class="image" style="width: 300px;height: 200px;">
                                 扫描微信二维码登录
+                                <span @click="loginDialog = false,isNotLogin = false" style="color: #28a745;">
+                                    <router-link to="/">(已注册)</router-link>
+                                </span>
                             </el-card>
                         </el-col>
                         <el-col :span="12">
                             <el-card shadow="hover">
                                 <img src="../../../assets/img/user/QR_code.png" class="image" style="width: 300px;height: 200px;">
-                                扫描QQ二维码登录<span @click="loginDialog = false,isNotLogin = false" style="color: #28a745;">(登录成功)</span>
+                                扫描QQ二维码登录
+                                <span @click="loginDialog = false,isNotLogin = false" style="color: #28a745;">
+                                    <router-link to="/management/userRegister">(暂未注册)</router-link>
+                                </span>
                             </el-card>
                         </el-col>
                     </el-row>
@@ -58,6 +64,9 @@
                   </span>
                   <el-dropdown-menu slot="dropdown" style="margin-right:10px;">
                     <el-dropdown-item>查看我的授课</el-dropdown-item>
+                      <router-link to="/userInfoCenter/courseManagement" class="link-tag">
+                          <el-dropdown-item>课程管理</el-dropdown-item>
+                      </router-link>
                       <router-link to="/course/create" class="link-tag">
                         <el-dropdown-item>创建一门课程</el-dropdown-item>
                       </router-link>
@@ -71,32 +80,36 @@
                   <el-dropdown-menu slot="dropdown" style="margin-right:10px;">
                     <el-dropdown-item>已购课程</el-dropdown-item>
                     <el-dropdown-item>班级课程</el-dropdown-item>
-                    <el-dropdown-item>收藏课程</el-dropdown-item>
+                      <router-link to="/userInfoCenter/userCollect" class="link-tag">
+                          <el-dropdown-item>我的收藏</el-dropdown-item>
+                      </router-link>
                   </el-dropdown-menu>
                 </el-dropdown>
 
                 <el-dropdown style="margin-right:10px;">
-                  <el-button type="primary" icon="el-icon-service" circle style="border-radius: 40px;"></el-button>
+                  <el-button type="primary" size="mini" icon="el-icon-service" circle style="border-radius: 40px;"></el-button>
                   <el-dropdown-menu slot="dropdown">
-                    <router-link to="/userInfoCenter/userDetails" class="link-tag">
-                      <el-dropdown-item>个人信息</el-dropdown-item>
-                    </router-link>
+                      <router-link to="/userInfoCenter/userDetails" class="link-tag">
+                          <el-dropdown-item>个人信息</el-dropdown-item>
+                      </router-link>
                     <router-link to="/userInfoCenter/userOrders" class="link-tag">
                       <el-dropdown-item>我的订单</el-dropdown-item>
                     </router-link>
                     <router-link to="/userInfoCenter/studyRecord" class="link-tag">
                       <el-dropdown-item>学习记录</el-dropdown-item>
                     </router-link>
-                    <router-link to="/userInfoCenter/userCollect" class="link-tag">
-                      <el-dropdown-item>我的收藏</el-dropdown-item>
+                    <router-link to="/userInfoCenter/userMsg" class="link-tag">
+                       <el-dropdown-item divided>
+                          我的消息<el-badge is-dot class="msg-item"></el-badge>
+                       </el-dropdown-item>
                     </router-link>
-                    <el-dropdown-item @click.native="isNotLogin = true">退出</el-dropdown-item>
+                    <router-link to="/" class="link-tag">
+                        <el-dropdown-item @click.native="isNotLogin = true">退出</el-dropdown-item>
+                    </router-link>
                   </el-dropdown-menu>
-                </el-dropdown>
+            </el-dropdown>
           </div>
-
         </div>
-
       </div>
     </div>
 
@@ -104,7 +117,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script scoped lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
   import {mapGetters} from 'vuex'
   import {OptionPanelInterface, OptionPanelItemInterface} from '@/components/common/OptionPanel/OptionPanel.Entity'

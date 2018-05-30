@@ -28,6 +28,18 @@ const UserCenterRouter: RouteConfig = {
       meta: {title: '我的收藏'},
       component: () => import(/* webpackChunkName: "group-user" */ '@/views/UserInfo/UserCollect.vue'),
     },
+    {
+        path: '/userInfoCenter/userMsg',
+        name: 'userMsg',
+        meta: {title: '我的消息'},
+        component: () => import(/* webpackChunkName: "group-user" */ '@/views/UserInfo/UserMsg.vue'),
+    },
+    {
+        path: '/userInfoCenter/courseManagement',
+        name: 'courseManagement',
+        meta: {title: '课程管理'},
+        component: () => import(/* webpackChunkName: "group-user" */ '@/views/UserInfo/CourseManagement.vue'),
+    }
   ],
 }
 

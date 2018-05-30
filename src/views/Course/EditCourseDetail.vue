@@ -30,12 +30,14 @@
                                 <el-select class="select-student-group" v-model="value" placeholder="请选择学历层">
                                     <el-option v-for="education in educationList" :key="education.value" :label="education.label" :value="education.value"></el-option>
                                 </el-select>
+
                                 <el-input class="add-student-group" v-model="input" placeholder="输入类型"></el-input>
                                 <el-button class="add-button" id="add-student-btn" icon="el-icon-plus" circle @click="addStudentType"></el-button>
+
                             </el-form-item>
 
                             <el-form-item label="所需工具">
-                                <el-select class="select-tool" v-model="form.region" placeholder="请选择">
+                                <el-select class="select-tool" v-model="formTool.region" placeholder="请选择">
                                     <el-option label="WebStorm" value="WebStorm"></el-option>
                                     <el-option label="Oracle" value="Oracle"></el-option>
                                 </el-select>
@@ -43,22 +45,22 @@
                             </el-form-item>
                             <el-form-item label="课程标签">
                                 <el-tag
-                                        :key="tag"
-                                        v-for="tag in dynamicTags"
-                                        closable
-                                        :disable-transitions="false"
-                                        @close="handleClose(tag)">
+                                    :key="tag"
+                                    v-for="tag in dynamicTags"
+                                    closable
+                                    :disable-transitions="false"
+                                    @close="handleClose(tag)"
+                                    color="white">
                                     {{tag}}
                                 </el-tag>
                                 <el-input
-                                        class="input-new-tag"
-                                        v-if="inputVisible"
-                                        v-model="inputValue"
-                                        ref="saveTagInput"
-                                        size="small"
-                                        @keyup.enter.native="handleInputConfirm"
-                                        @blur="handleInputConfirm"
-                                >
+                                    class="input-new-tag"
+                                    v-if="inputVisible"
+                                    v-model="inputValue"
+                                    ref="saveTagInput"
+                                    size="small"
+                                    @keyup.enter.native="handleInputConfirm"
+                                    @blur="handleInputConfirm">
                                 </el-input>
                                 <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
                             </el-form-item>
@@ -83,10 +85,10 @@
                     <legend><h3>&nbsp;课程介绍&nbsp;</h3></legend>
                     <div class="content-body">
                         <el-input
-                                type="textarea"
-                                :autosize="{ minRows: 4, maxRows: 8}"
-                                placeholder="请输入内容"
-                                v-model="textarea3">
+                            type="textarea"
+                            :autosize="{ minRows: 4, maxRows: 8}"
+                            placeholder="请输入内容"
+                            v-model="textarea3">
                         </el-input>
                     </div>
                 </fieldset>
@@ -100,15 +102,15 @@
                         <div class="path-board">
                             <el-row>
                                 <el-col :span="12">
-                                    <el-form ref="form" :model="form" label-width="80px" style="padding-bottom: 5px;">
-                                        <el-form-item label="类型名称" style="margin-bottom: 10px;">
-                                            <el-select v-model="form.region" placeholder="请选择">
+                                    <el-form ref="form" :model="formTypeA" label-width="80px" style="padding-bottom: 5px;padding-right: 10px;border-right: 1px dashed #d9d9d9;">
+                                        <el-form-item label="类型名称" style="margin-bottom: 15px;">
+                                            <el-select v-model="formTypeA.region" placeholder="请选择">
                                                 <el-option label="百度云盘" value="百度云盘"></el-option>
                                                 <el-option label="金山网盘" value="金山网盘"></el-option>
                                             </el-select>
                                         </el-form-item>
                                         <el-form-item label="URL地址" style="margin-bottom: 5px;">
-                                            <el-input v-model="form.name"></el-input>
+                                            <el-input v-model="formTypeA.name"></el-input>
                                         </el-form-item>
                                     </el-form>
                                 </el-col>
@@ -130,9 +132,9 @@
                         <div class="path-board">
                             <el-row>
                                 <el-col :span="12">
-                                    <el-form ref="form" :model="form" label-width="80px" style="padding-bottom: 5px;">
+                                    <el-form ref="form" :model="formTypeB" label-width="80px" style="padding-bottom: 5px;padding-right: 10px;border-right: 1px dashed #d9d9d9;">
                                         <el-form-item label="类型名称" style="margin-bottom: 10px;">
-                                            <el-select v-model="form.region" placeholder="请选择">
+                                            <el-select v-model="formTypeB.region" placeholder="请选择">
                                                 <el-option label="百度云盘" value="百度云盘"></el-option>
                                                 <el-option label="金山网盘" value="金山网盘"></el-option>
                                             </el-select>
@@ -268,13 +270,19 @@
                 input: '',
                 form: {
                     name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
+                    region: ''
+                },
+                formTool: {
+                    name: '',
+                    region: ''
+                },
+                formTypeA: {
+                    name: '',
+                    region: ''
+                },
+                formTypeB: {
+                    name: '',
+                    region: ''
                 },
                 dynamicTags: ['标签一', '标签二', '标签三'],
                 inputVisible: false,
@@ -355,13 +363,6 @@
         }
     }
 </script>
-
-<style>
-    .el-tag + .el-tag {
-        margin-left: 10px;
-    }
-
-</style>
 
 <style scoped lang="scss">
     .editCourseDetail {
@@ -477,9 +478,4 @@
         vertical-align: bottom;
     }
 
-</style>
-<style>
-    .cscs {
-        margin-bottom: 1px;
-    }
 </style>

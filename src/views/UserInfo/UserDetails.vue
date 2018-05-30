@@ -47,7 +47,7 @@
         </fieldset>
 
         <fieldset class="content-box">
-            <legend><h3>&nbsp;个人描述&nbsp;</h3></legend>
+            <legend><h3>&nbsp;个人介绍&nbsp;</h3></legend>
             <div class="content-body">
                 个人描述个人描述个人描述个人描述个人描述个人描述个人描述个人描述个人描述个人描述 
                 <p>个人描述个人描述个人描述个人描述个人描述个人描述</p> 

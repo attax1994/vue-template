@@ -58,17 +58,19 @@
                                     <span class="mini-info info-normal">已更新10集/共20集</span>
                                 </div>
                             </div>
-                            <div class="content-body">
-                                <span class="main-title">&nbsp;全套Java编程完整版教程&nbsp;</span>
-                                <p>
-                                    <el-tag class="min-tag" size="mini">CSS</el-tag>
-                                    <el-tag class="min-tag" size="mini">Java</el-tag>
-                                    <el-tag class="min-tag" size="mini">html</el-tag>
-                                    <el-tag class="min-tag" size="mini">web</el-tag>
-                                    <el-tag class="min-tag" size="mini">大数据</el-tag>
-                                </p>
-                                <el-progress :percentage="70"></el-progress>
-                            </div> 
+                            <router-link to="/course/detail/1" active-class="router-active" class="class-board">
+                                <div class="content-body">
+                                    <span class="main-title">&nbsp;全套Java编程完整版教程&nbsp;</span>
+                                    <p>
+                                        <el-tag class="min-tag" size="mini">CSS</el-tag>
+                                        <el-tag class="min-tag" size="mini">Java</el-tag>
+                                        <el-tag class="min-tag" size="mini">html</el-tag>
+                                        <el-tag class="min-tag" size="mini">web</el-tag>
+                                        <el-tag class="min-tag" size="mini">大数据</el-tag>
+                                    </p>
+                                    <el-progress :percentage="70"></el-progress>
+                                </div>
+                            </router-link>
                         </div>
                     </el-col>
                     <el-col :span="6" :xs="12" :sm="6">
@@ -80,17 +82,19 @@
                                     <span class="mini-info info-normal">已更新10集/共20集</span>
                                 </div>
                             </div>
-                            <div class="content-body">
-                                <span class="main-title">&nbsp;全套Java编程完整版教程&nbsp;</span>
-                                <p>
-                                    <el-tag class="min-tag" size="mini">CSS</el-tag>
-                                    <el-tag class="min-tag" size="mini">Java</el-tag>
-                                    <el-tag class="min-tag" size="mini">html</el-tag>
-                                    <el-tag class="min-tag" size="mini">web</el-tag>
-                                    <el-tag class="min-tag" size="mini">大数据</el-tag>
-                                </p>
-                                <el-progress :percentage="70"></el-progress>
-                            </div> 
+                            <router-link to="/course/detail/1" active-class="router-active" class="class-board">
+                                <div class="content-body">
+                                    <span class="main-title">&nbsp;全套Java编程完整版教程&nbsp;</span>
+                                    <p>
+                                        <el-tag class="min-tag" size="mini">CSS</el-tag>
+                                        <el-tag class="min-tag" size="mini">Java</el-tag>
+                                        <el-tag class="min-tag" size="mini">html</el-tag>
+                                        <el-tag class="min-tag" size="mini">web</el-tag>
+                                        <el-tag class="min-tag" size="mini">大数据</el-tag>
+                                    </p>
+                                    <el-progress :percentage="70"></el-progress>
+                                </div>
+                            </router-link>
                         </div>
                     </el-col>
                     <el-col :span="6" :xs="12" :sm="6">
@@ -102,17 +106,19 @@
                                     <span class="mini-info info-normal">已更新10集/共20集</span>
                                 </div>
                             </div>
-                            <div class="content-body">
-                                <span class="main-title">&nbsp;全套Java编程完整版教程&nbsp;</span>
-                                <p>
-                                    <el-tag class="min-tag" size="mini">CSS</el-tag>
-                                    <el-tag class="min-tag" size="mini">Java</el-tag>
-                                    <el-tag class="min-tag" size="mini">html</el-tag>
-                                    <el-tag class="min-tag" size="mini">web</el-tag>
-                                    <el-tag class="min-tag" size="mini">大数据</el-tag>
-                                </p>
-                                <el-progress :percentage="70"></el-progress>
-                            </div> 
+                            <router-link to="/course/detail/1" active-class="router-active" class="class-board">
+                                <div class="content-body">
+                                    <span class="main-title">&nbsp;全套Java编程完整版教程&nbsp;</span>
+                                    <p>
+                                        <el-tag class="min-tag" size="mini">CSS</el-tag>
+                                        <el-tag class="min-tag" size="mini">Java</el-tag>
+                                        <el-tag class="min-tag" size="mini">html</el-tag>
+                                        <el-tag class="min-tag" size="mini">web</el-tag>
+                                        <el-tag class="min-tag" size="mini">大数据</el-tag>
+                                    </p>
+                                    <el-progress :percentage="70"></el-progress>
+                                </div>
+                            </router-link>
                         </div>
                     </el-col>
                     <el-col :span="6" :xs="12" :sm="6">
@@ -124,17 +130,19 @@
                                     <span class="mini-info info-normal">已更新10集/共20集</span>
                                 </div>
                             </div>
-                            <div class="content-body">
-                                <span class="main-title">&nbsp;全套Java编程完整版教程&nbsp;</span>
-                                <p>
-                                    <el-tag class="min-tag" size="mini">CSS</el-tag>
-                                    <el-tag class="min-tag" size="mini">Java</el-tag>
-                                    <el-tag class="min-tag" size="mini">html</el-tag>
-                                    <el-tag class="min-tag" size="mini">web</el-tag>
-                                    <el-tag class="min-tag" size="mini">大数据</el-tag>
-                                </p>
-                                <el-progress :percentage="70"></el-progress>
-                            </div> 
+                            <router-link to="/course/detail/1" active-class="router-active" class="class-board">
+                                <div class="content-body">
+                                    <span class="main-title">&nbsp;全套Java编程完整版教程&nbsp;</span>
+                                    <p>
+                                        <el-tag class="min-tag" size="mini">CSS</el-tag>
+                                        <el-tag class="min-tag" size="mini">Java</el-tag>
+                                        <el-tag class="min-tag" size="mini">html</el-tag>
+                                        <el-tag class="min-tag" size="mini">web</el-tag>
+                                        <el-tag class="min-tag" size="mini">大数据</el-tag>
+                                    </p>
+                                    <el-progress :percentage="70"></el-progress>
+                                </div>
+                            </router-link>
                         </div>
                     </el-col>
                 </el-row>
@@ -188,6 +196,12 @@
         display: inline-block;
         margin-left: 10px;
         vertical-align: top;
+    }
+    .temp-content {
+        .class-board {
+            color:#2c3e50;
+            text-decoration: none;
+        }
     }
     .temp-footer {
         margin-top: 20px;
